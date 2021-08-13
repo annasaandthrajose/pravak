@@ -1,0 +1,19 @@
+body{
+    background-color: burlywood;
+    height: 600px;
+}
+h1{
+    color: crimson;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    padding-top: 20%;
+    
+}
+.log{
+    color: darkblue;
+    margin-left: 60%;
+}

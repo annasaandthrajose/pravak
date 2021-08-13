@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4"><h1>WELCOME</h1>
+        
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <h2></h2>
+        <form [formGroup]="loginForm">
+            <div class="mb-3">
+              <label for="acno" class="form-label">Account number</label>
+              <input type="text" class="form-control" id="acno" formControlName="acno" name="ac"aria-describedby="emailHelp">
+              <div class="err" *ngIf="(loginForm.get('acno')?.touched|| loginForm.get('acno')?.dirty)&&loginForm.get('acno')?.errors">invalid account number</div>
+            </div>
+            <div class="mb-3">
+              <label for="pwd" class="form-label">Password</label>
+              <input type="password" class="form-control" formControlName="pswd" id="pwd" name="ps">
+              <div class="err" *ngIf="(loginForm.get('pswd')?.touched|| loginForm.get('pswd')?.dirty)&&loginForm.get('pswd')?.errors">invalid password</div>
+            </div>
+            
+            <button type="submit" class="btn" (click)="login()">Submit</button>
+            <br>
+            <br>
+            <a href="" class="link" routerLink="register">Register</a>
+          </form>
+
+    </div>
+    
+</body>
+</html>
+

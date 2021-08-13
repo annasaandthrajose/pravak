@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4"><h1>WELCOME TO REGISTRATION </h1>
+        
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <h2>Register Form</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="register()"> 
+            <div class="mb-3">
+                <label for="uname" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="uname" formControlName="uname" [(ngModel)]="uname" name="un"aria-describedby="emailHelp">
+                <div class="error" *ngIf="(registerForm.get('uname')?.touched|| registerForm.get('uname')?.dirty)&&registerForm.get('uname')?.errors">invalid username</div>
+              </div>
+            <div class="mb-3">
+              <label for="acno" class="form-label">Account number</label>
+              <input type="text" class="form-control" id="acno"formControlName="acno"  [(ngModel)]="acno" name="ac"aria-describedby="emailHelp">
+              <div class="error" *ngIf="(registerForm.get('acno')?.touched|| registerForm.get('acno')?.dirty)&&registerForm.get('acno')?.errors">invalid account number</div>
+            </div>
+            <div class="mb-3">
+              <label for="pwd" class="form-label">Password</label>
+              <input type="password" class="form-control"  id="pwd" formControlName="pswd" [(ngModel)]="pswd" name="ps">
+              <div class="error" *ngIf="(registerForm.get('pswd')?.touched|| registerForm.get('pswd')?.dirty)&&registerForm.get('pswd')?.errors">invalid password</div>
+            </div>
+            
+            
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+
+    </div>
+    
+</body>
+</html>
+
+
