@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
@@ -14,7 +15,7 @@ export class DataService {
     
   
     }
-  constructor(private router:Router) { 
+  constructor(private router:Router,private http:HttpClient) { 
     this.getDetails()
   }
   saveDetails(){
@@ -27,29 +28,18 @@ export class DataService {
     
   }
   register(uname:any,acno:any,pswd:any){
-    var users=this.accountDetails
-if(acno in users){
-  return false
-// alert("user exists,please login")
-}
-else{
-users[acno]={
-  username:uname,
-  acno,
-  password:pswd
+    const data={
+      uname,acno,pswd
+    }
+return this.http.post("http://localhost:2000/register",data)
+    }
 
-  
-}
-this.saveDetails()
-return true
-// alert("registration Sucessful")
-// this.router.navigateByUrl("")
-}
-
-
-}
-
-
-  
+    login(acno:any,pswd:any){
+      const data={
+        acno,pswd
+      }
+  return this.http.post("http://localhost:2000/login",data)
+      }
   }
 
+  

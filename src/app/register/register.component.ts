@@ -32,40 +32,31 @@ if(this.registerForm.valid){
   var uname=this.registerForm.value.uname
   var acno=this.registerForm.value.acno
   var pswd=this.registerForm.value.pswd
-  var users=this.service.accountDetails
+  //var users=this.service.accountDetails
   
   
-  const result=this.service.register(uname,acno,pswd)
+  this.service.register(uname,acno,pswd)
+  
+  .subscribe((result:any)=>{
     if(result){
-      alert("registration Sucessful")
-  this.router.navigateByUrl("")
-      
-    }
-    else{
-      alert("user exists,please login")
+      alert(result.message);
       this.router.navigateByUrl("")
     }
+  },
+  (result:any)=>{
+    alert(result.error.message)
+    this.router.navigateByUrl("")
+  })
 }
+  
+
+
 
 else{
   alert("invalid form")
 }
 
-// var uname=this.registerForm.value.uname
-// var acno=this.registerForm.value.acno
-// var pswd=this.registerForm.value.pswd
-// var users=this.service.accountDetails
 
-
-// const result=this.service.register(uname,acno,pswd)
-//   if(result){
-//     alert("registration Sucessful")
-// this.router.navigateByUrl("")
-    
-//   }
-//   else{
-//     alert("user exists,please login")
-//   }
 }
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -37,23 +38,21 @@ loginForm=this.fb.group({
       var acno=this.loginForm.value.acno;
       var pswd=this.loginForm.value.pswd;
       var users=this.service.accountDetails;
-      if(acno in users){
-        if(pswd==users[acno]["password"]){
-        
-        alert("login Sucessful")
-        this.router.navigateByUrl("welcome")
-          
-        }
-        else{
-          alert("incorrect password")
-        }
-      }
-    else{
-      alert("user doesnt exist,please register")
-    }
-   
-    }
+
     
+  
+    this.service.login(acno,pswd)
+  .subscribe((result:any)=>{
+if(result){
+  alert(result.message)
+  
+  this.router.navigateByUrl("welcome")
+}
+  },
+  (result)=>{
+    alert(result.error.message);
+   } )
+  }
   else{
     alert("invalid form")
   }
@@ -65,3 +64,4 @@ loginForm=this.fb.group({
 
 
 
+  
